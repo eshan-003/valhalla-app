@@ -12,10 +12,8 @@ import PropTypes from 'prop-types'
 const CustomSlider = (props) => {
   const { settings, option, profile, handleUpdateSettings } = props
   const { min, max, step } = option.settings
-
   const [sliderVal, setSliderVal] = useState(parseFloat(settings[option.param]))
 
-  console.log(sliderVal)
   useEffect(() => {
     setSliderVal(parseFloat(settings[option.param]))
   }, [settings, option.param])
@@ -27,6 +25,11 @@ const CustomSlider = (props) => {
         profile === 'truck'
           ? settingsInitTruckOverride[option.param]
           : settingsInit[option.param]
+    }
+    if (value < min) {
+      value = min
+    } else if (value > max) {
+      value = max
     }
     setSliderVal(parseFloat(value))
     debounce(
