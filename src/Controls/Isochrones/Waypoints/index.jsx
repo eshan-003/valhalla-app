@@ -228,7 +228,7 @@ class Waypoints extends Component {
             loading={isFetching}
             results={geocodeResults}
             value={userInput}
-            onKeyPress={(event: React.KeyboardEvent) => {
+            onKeyPress={(event) => {
               this.fetchGeocodeResults(event.key)
             }}
             placeholder="Hit enter for search..."
